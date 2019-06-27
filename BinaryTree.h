@@ -394,7 +394,15 @@ Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
 	Node<T>* A = node;
 	Node<T>* B = A->lLink;
 	A->lLink = B->rLink;
+	
 	B->rLink = A;
+
+	if (A == root)
+	{
+		root = B;
+	}
+
+
 	return B;
 }
 
@@ -409,8 +417,12 @@ Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
 	B->rLink = C->lLink;
 	C->lLink = B;
 	C->rLink = A;
-
-	return C;
+	
+	if (A == root)
+	{
+		root = C;
+	}
+		return C;
 }
 
 template<class T>
@@ -420,6 +432,13 @@ Node<T>* BinaryTree<T>::RRRotation(Node<T>* node)
 	Node<T>* B = node->rLink;
 	A->rLink = B->lLink;
 	B->lLink = A;
+
+	if (A == root)
+	{
+		root = B;
+	}
+
+
 	return B;
 }
 
@@ -434,6 +453,12 @@ Node<T>* BinaryTree<T>::RLRotation(Node<T>* node)
 	B->lLink = C->rLink;
 	C->rLink = B;
 	C->lLink = A;
+
+	if (A == root)
+	{
+		root = C;
+	}
+
 
 	return C;
 }

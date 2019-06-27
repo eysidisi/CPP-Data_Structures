@@ -15,8 +15,10 @@ int main()
 
 	for (size_t i = 0; i < 5; i++)
 	{
-		tree.root=tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
+		tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
 	}
+
+	tree.InorderTraversal(tree.root);
 
 	return 0;
 }
