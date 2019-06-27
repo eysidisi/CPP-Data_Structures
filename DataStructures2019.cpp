@@ -11,9 +11,9 @@ int main()
 {
 	BinaryTree <int> tree;
 
-	int arr[6] = { 30,20,10,25,40,35 };
+	int arr[8] = { 10,25,20,45,60,50,40,30};
 
-	tree.CreateBinarySearchTreeUsingPreorder(arr, 6);
+	tree.CreateBinarySearchTreeUsingPostorder(arr, 8);
 
 	tree.InorderTraversal(tree.root);
 

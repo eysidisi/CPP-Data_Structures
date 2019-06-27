@@ -47,6 +47,8 @@ public:
 	Node<T>* DeleteElement(T key, Node<T>* node);
 
 	void CreateBinarySearchTreeUsingPreorder(T arr[], int size);
+
+	void CreateBinarySearchTreeUsingPostorder(T arr[], int size);
 };
 
 template<class T>
@@ -522,6 +524,61 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPreorder(T arr[], int size)
 		else
 		{
 			i++;
+		}
+	}
+
+}
+
+template<class T>
+void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
+{
+	int i = size - 1;
+
+	root = new Node<T>(arr[i]);
+
+	i--;
+
+	Node<T>* p = root;
+
+	Stack<Node<T>*> stack;
+
+	stack.Push(root);
+
+	while (i>= 0)
+	{
+		if (arr[i] > p->data)
+		{
+			stack.Push(p);
+			p->rLink = new Node<T>(arr[i]);
+			p = p->rLink;
+			i--;
+		}
+
+		else
+		{
+			if (stack.IsEmpty())
+			{
+				p->lLink = new Node<T>(arr[i]);
+				p = p->lLink;
+				i--;
+			}
+
+			else
+			{
+				Node <T>* tempNode = stack.top->data;
+				
+				if (tempNode->data < arr[i])
+				{
+					p->lLink = new Node<T>(arr[i]);
+					p = p->lLink;
+					i--;
+				}
+
+				else
+				{
+					p = stack.Pop();
+				}
+			}
 		}
 	}
 
