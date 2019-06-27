@@ -9,13 +9,14 @@
 
 int main()
 {
-	BinaryTree <int> tree;
+	int arr[] = { 1,2,3 };
 
-	int arr[8] = { 10,25,20,45,60,50,40,30};
+	BinaryTree<int> tree;
 
-	tree.CreateBinarySearchTreeUsingPostorder(arr, 8);
-
-	tree.InorderTraversal(tree.root);
+	for (size_t i = 0; i < 3; i++)
+	{
+		tree.root=tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
+	}
 
 	return 0;
 }

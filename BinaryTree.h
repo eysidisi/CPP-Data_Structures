@@ -38,6 +38,14 @@ public:
 
 	bool InsertElementInBinaryTree(T key);
 
+	Node<T>* LLRotation(Node<T>* node);
+
+	Node<T>* LRRotation(Node<T>* node);
+
+	Node<T>* RRRotation(Node<T>* node);
+
+	Node<T>* RLRotation(Node<T>* node);
+
 	Node<T>* RecursiveInsertElementInBinaryTree(Node<T>*& node, T key);
 
 	Node<T>* FindPrecessor(Node<T>* node);
@@ -306,7 +314,7 @@ Node<T>* BinaryTree<T>::RecursiveBinarySearch(Node<T>* node, T key)
 }
 
 template<class T>
-inline Node<T>* BinaryTree<T>::IterativeBinarySearch(T key)
+ Node<T>* BinaryTree<T>::IterativeBinarySearch(T key)
 {
 	Node <T>* currentNode = root;
 
@@ -381,6 +389,38 @@ bool BinaryTree<T>::InsertElementInBinaryTree(T key)
 }
 
 template<class T>
+Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
+{
+	Node<T>* A = node;
+	Node<T>* B = A->lLink;
+	A->lLink = B->rLink;
+	B->rLink = A;
+	return B;
+}
+
+template<class T>
+Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
+{
+	return NULL;
+}
+
+template<class T>
+Node<T>* BinaryTree<T>::RRRotation(Node<T>* node)
+{
+	Node<T>* A = node;
+	Node<T>* B = node->rLink;
+	A->rLink = B->lLink;
+	B->lLink = A;
+	return B;
+}
+
+template<class T>
+Node<T>* BinaryTree<T>::RLRotation(Node<T>* node)
+{
+	return NULL;
+}
+
+template<class T>
 Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key)
 {
 	if (node == nullptr)
@@ -396,6 +436,27 @@ Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key
 	else if (key < node->data)
 	{
 		node->lLink = RecursiveInsertElementInBinaryTree(node->lLink, key);
+	}
+
+
+	if (node->FindBalanceFactor(node) == 2 && node->FindBalanceFactor(node->lLink) == 1)
+	{
+		return LLRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == 2 && node->FindBalanceFactor(node->lLink) == -1)
+	{
+		return LRRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == -2 && node->FindBalanceFactor(node->lLink) == 1)
+	{
+		return RRRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == 2 && node->FindBalanceFactor(node->lLink) == -1)
+	{
+		return RLRotation(node);
 	}
 
 	return node;
@@ -544,7 +605,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 
 	stack.Push(root);
 
-	while (i>= 0)
+	while (i >= 0)
 	{
 		if (arr[i] > p->data)
 		{
@@ -566,7 +627,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 			else
 			{
 				Node <T>* tempNode = stack.top->data;
-				
+
 				if (tempNode->data < arr[i])
 				{
 					p->lLink = new Node<T>(arr[i]);
