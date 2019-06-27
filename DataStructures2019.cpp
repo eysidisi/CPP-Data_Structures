@@ -9,11 +9,11 @@
 
 int main()
 {
-	int arr[] = { 1,2,3 };
+	int arr[] = { 4,6,5,10,7 };
 
 	BinaryTree<int> tree;
 
-	for (size_t i = 0; i < 3; i++)
+	for (size_t i = 0; i < 5; i++)
 	{
 		tree.root=tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
 	}

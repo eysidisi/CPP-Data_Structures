@@ -401,7 +401,16 @@ Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
 template<class T>
 Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
 {
-	return NULL;
+	Node<T>* A = node;
+	Node<T>* B = A->lLink;
+	Node<T>* C = B->rLink;
+
+	A->lLink = C->rLink;
+	B->rLink = C->lLink;
+	C->lLink = B;
+	C->rLink = A;
+
+	return C;
 }
 
 template<class T>
@@ -417,7 +426,16 @@ Node<T>* BinaryTree<T>::RRRotation(Node<T>* node)
 template<class T>
 Node<T>* BinaryTree<T>::RLRotation(Node<T>* node)
 {
-	return NULL;
+	Node<T>* A = node;
+	Node<T>* B = A->rLink;
+	Node<T>* C = B->lLink;
+
+	A->rLink = C->lLink;
+	B->lLink = C->rLink;
+	C->rLink = B;
+	C->lLink = A;
+
+	return C;
 }
 
 template<class T>
@@ -439,6 +457,7 @@ Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key
 	}
 
 
+
 	if (node->FindBalanceFactor(node) == 2 && node->FindBalanceFactor(node->lLink) == 1)
 	{
 		return LLRotation(node);
@@ -449,12 +468,12 @@ Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key
 		return LRRotation(node);
 	}
 
-	else if (node->FindBalanceFactor(node) == -2 && node->FindBalanceFactor(node->lLink) == 1)
+	else if (node->FindBalanceFactor(node) == -2 && node->FindBalanceFactor(node->rLink) == -1)
 	{
 		return RRRotation(node);
 	}
 
-	else if (node->FindBalanceFactor(node) == 2 && node->FindBalanceFactor(node->lLink) == -1)
+	else if (node->FindBalanceFactor(node) == -2 && node->FindBalanceFactor(node->rLink) == 1)
 	{
 		return RLRotation(node);
 	}
