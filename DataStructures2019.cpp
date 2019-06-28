@@ -9,16 +9,20 @@
 
 int main()
 {
-	int arr[] = { 4,6,5,10,7 };
+	int arr[] = { 5,3,7,4,6,8 };
 
 	BinaryTree<int> tree;
 
-	for (size_t i = 0; i < 5; i++)
+	for (size_t i = 0; i < 6; i++)
 	{
 		tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
 	}
 
-	tree.InorderTraversal(tree.root);
+	tree.DeleteElement(5,tree.root);
+
+	tree.CheckAVLTree();
+
+	tree.LevelorderTraversal();
 
 	return 0;
 }

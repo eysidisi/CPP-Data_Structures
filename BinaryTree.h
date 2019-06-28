@@ -57,6 +57,10 @@ public:
 	void CreateBinarySearchTreeUsingPreorder(T arr[], int size);
 
 	void CreateBinarySearchTreeUsingPostorder(T arr[], int size);
+
+	void CheckAVLTree();
+
+	Node<T>* CheckAVLNode(Node<T>* node);
 };
 
 template<class T>
@@ -314,7 +318,7 @@ Node<T>* BinaryTree<T>::RecursiveBinarySearch(Node<T>* node, T key)
 }
 
 template<class T>
- Node<T>* BinaryTree<T>::IterativeBinarySearch(T key)
+Node<T>* BinaryTree<T>::IterativeBinarySearch(T key)
 {
 	Node <T>* currentNode = root;
 
@@ -394,7 +398,7 @@ Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
 	Node<T>* A = node;
 	Node<T>* B = A->lLink;
 	A->lLink = B->rLink;
-	
+
 	B->rLink = A;
 
 	if (A == root)
@@ -417,12 +421,12 @@ Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
 	B->rLink = C->lLink;
 	C->lLink = B;
 	C->rLink = A;
-	
+
 	if (A == root)
 	{
 		root = C;
 	}
-		return C;
+	return C;
 }
 
 template<class T>
@@ -687,6 +691,47 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 		}
 	}
 
+}
+
+template<class T>
+void BinaryTree<T>::CheckAVLTree()
+{
+	this->CheckAVLNode(root);
+}
+
+template<class T>
+Node<T>* BinaryTree<T>::CheckAVLNode(Node<T>* node)
+{
+	if (node == nullptr)
+	{
+		return nullptr;
+	}
+
+	node->rLink = CheckAVLNode(node->rLink);
+
+	node->lLink = CheckAVLNode(node->lLink);
+
+	if (node->FindBalanceFactor(node) == 2 && (node->FindBalanceFactor(node->lLink) == 1 ))
+	{
+		return LLRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == 2 && (node->FindBalanceFactor(node->lLink) == -1 || node->FindBalanceFactor(node->lLink) == 0))
+	{
+		return LRRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == -2 && node->FindBalanceFactor(node->rLink) == -1)
+	{
+		return RRRotation(node);
+	}
+
+	else if (node->FindBalanceFactor(node) == -2 && (node->FindBalanceFactor(node->rLink) == 1 || node->FindBalanceFactor(node->rLink) == 0))
+	{
+		return RLRotation(node);
+	}
+
+	return node;
 }
 
 
