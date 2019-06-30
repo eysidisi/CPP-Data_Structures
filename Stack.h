@@ -1,11 +1,11 @@
 #pragma once
-#include "Node.h"
+#include "BinaryTreeNode.h"
 #include <iostream>
 template<class T>
 class Stack
 {
 public:
-	Node<T>* top;
+	BinaryTreeNode<T>* top;
 
 	Stack(T data);
 	Stack();
@@ -20,7 +20,7 @@ public:
 template<class T>
 Stack<T>::Stack(T data)
 {
-	top = new Node<T>(data);
+	top = new BinaryTreeNode<T>(data);
 }
 
 template<class T>
@@ -34,7 +34,7 @@ template<class T>
  {
 	 while (top != nullptr)
 	 {
-		 Node<T>* rLinkNode = top->rLink;
+		 BinaryTreeNode<T>* rLinkNode = top->rLink;
 		 delete(top);
 		 top = rLinkNode;
 	 }
@@ -45,12 +45,12 @@ void Stack<T>::Push(T data)
 {
 	if (top == nullptr)
 	{
-		top = new Node<T>(data);
+		top = new BinaryTreeNode<T>(data);
 	}
 
 	else
 	{
-		Node<T>* newNode = new Node<T>(data);
+		BinaryTreeNode<T>* newNode = new BinaryTreeNode<T>(data);
 		newNode->rLink = top;
 		top = newNode;
 	}
@@ -64,7 +64,7 @@ T Stack<T>::Pop()
 	else
 	{
 		T dataToReturn = top->data;
-		Node<T>* nodeToDelete = top;
+		BinaryTreeNode<T>* nodeToDelete = top;
 		top = top->rLink;
 		delete(nodeToDelete);
 		return dataToReturn;

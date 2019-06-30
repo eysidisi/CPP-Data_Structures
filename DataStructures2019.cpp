@@ -2,27 +2,24 @@
 //
 
 #include <iostream>
-#include "Node.h"	
+#include "BinaryTreeNode.h"	
 #include "Queue.h"
 #include "Stack.h"
 #include "BinaryTree.h"
+#include "TwoThreeTree.h"
 
 int main()
 {
-	int arr[] = { 5,3,7,4,6,8 };
+	TwoThreeTree tree;
 
-	BinaryTree<int> tree;
+	tree.AddElement(7);
+	tree.AddElement(6);
+	tree.AddElement(5);
+	tree.AddElement(4);
+	tree.AddElement(3);
+	tree.AddElement(2);
+	tree.AddElement(1);
 
-	for (size_t i = 0; i < 6; i++)
-	{
-		tree.RecursiveInsertElementInBinaryTree(tree.root, arr[i]);
-	}
-
-	tree.DeleteElement(5,tree.root);
-
-	tree.CheckAVLTree();
-
-	tree.LevelorderTraversal();
 
 	return 0;
 }

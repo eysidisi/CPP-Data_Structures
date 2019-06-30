@@ -1,12 +1,12 @@
 #pragma once
-#include "Node.h"
+#include "BinaryTreeNode.h"
 #include "Stack.h"
 #include "Queue.h"
 
 template<class T>
 class BinaryTree
 {
-	Queue<Node<T>*>* queue;
+	Queue<BinaryTreeNode<T>*>* queue;
 public:
 	BinaryTree();
 
@@ -16,43 +16,43 @@ public:
 
 	void Add(T element);
 
-	void PreorderTraversal(Node<T>* node);
+	void PreorderTraversal(BinaryTreeNode<T>* node);
 
-	Node<T>* root;
+	BinaryTreeNode<T>* root;
 
-	void PostorderTraversal(Node<T>* node);
+	void PostorderTraversal(BinaryTreeNode<T>* node);
 
-	void InorderTraversal(Node<T>* node);
+	void InorderTraversal(BinaryTreeNode<T>* node);
 
 	void LevelorderTraversal();
 
-	int Count(Node<T>* node);
+	int Count(BinaryTreeNode<T>* node);
 
-	int CalcHeight(Node<T>* node);
+	int CalcHeight(BinaryTreeNode<T>* node);
 
-	int CalcNumOfLeafNodes(Node<T>* node);
+	int CalcNumOfLeafNodes(BinaryTreeNode<T>* node);
 
-	Node<T>* RecursiveBinarySearch(Node<T>* node, T key);
+	BinaryTreeNode<T>* RecursiveBinarySearch(BinaryTreeNode<T>* node, T key);
 
-	Node<T>* IterativeBinarySearch(T key);
+	BinaryTreeNode<T>* IterativeBinarySearch(T key);
 
 	bool InsertElementInBinaryTree(T key);
 
-	Node<T>* LLRotation(Node<T>* node);
+	BinaryTreeNode<T>* LLRotation(BinaryTreeNode<T>* node);
 
-	Node<T>* LRRotation(Node<T>* node);
+	BinaryTreeNode<T>* LRRotation(BinaryTreeNode<T>* node);
 
-	Node<T>* RRRotation(Node<T>* node);
+	BinaryTreeNode<T>* RRRotation(BinaryTreeNode<T>* node);
 
-	Node<T>* RLRotation(Node<T>* node);
+	BinaryTreeNode<T>* RLRotation(BinaryTreeNode<T>* node);
 
-	Node<T>* RecursiveInsertElementInBinaryTree(Node<T>*& node, T key);
+	BinaryTreeNode<T>* RecursiveInsertElementInBinaryTree(BinaryTreeNode<T>*& node, T key);
 
-	Node<T>* FindPrecessor(Node<T>* node);
+	BinaryTreeNode<T>* FindPrecessor(BinaryTreeNode<T>* node);
 
-	Node<T>* FindSuccessor(Node<T>* node);
+	BinaryTreeNode<T>* FindSuccessor(BinaryTreeNode<T>* node);
 
-	Node<T>* DeleteElement(T key, Node<T>* node);
+	BinaryTreeNode<T>* DeleteElement(T key, BinaryTreeNode<T>* node);
 
 	void CreateBinarySearchTreeUsingPreorder(T arr[], int size);
 
@@ -60,25 +60,25 @@ public:
 
 	void CheckAVLTree();
 
-	Node<T>* CheckAVLNode(Node<T>* node);
+	BinaryTreeNode<T>* CheckAVLNode(BinaryTreeNode<T>* node);
 };
 
 template<class T>
 BinaryTree<T>::BinaryTree()
 {
 	root = nullptr;
-	queue = new Queue<Node<T>*>();
+	queue = new Queue<BinaryTreeNode<T>*>();
 }
 
 template<class T>
 BinaryTree<T>::~BinaryTree()
 {
-	Queue<Node<T>*>* newQueue = new Queue<Node<T>*>();
+	Queue<BinaryTreeNode<T>*>* newQueue = new Queue<BinaryTreeNode<T>*>();
 
 	if (root != nullptr)
 		newQueue->Enqueue(root);
 
-	Node<int>* currentNode;
+	BinaryTreeNode<int>* currentNode;
 
 	while (!newQueue->IsEmpty())
 	{
@@ -108,12 +108,12 @@ void BinaryTree<T>::Add(T* arr, int size)
 {
 	if (root == nullptr)
 	{
-		root = new Node<T>(arr[0]);
+		root = new BinaryTreeNode<T>(arr[0]);
 		queue->Enqueue(root);
 	}
 
 
-	Node<T>* currentNode;
+	BinaryTreeNode<T>* currentNode;
 
 	for (size_t i = 1; i < size; i++)
 	{
@@ -121,14 +121,14 @@ void BinaryTree<T>::Add(T* arr, int size)
 
 		if (currentNode->lLink == nullptr)
 		{
-			currentNode->lLink = new Node<T>(arr[i]);
+			currentNode->lLink = new BinaryTreeNode<T>(arr[i]);
 
 			queue->Enqueue(currentNode->lLink);
 		}
 
 		else if (currentNode->rLink == nullptr)
 		{
-			currentNode->rLink = new Node<T>(arr[i]);
+			currentNode->rLink = new BinaryTreeNode<T>(arr[i]);
 
 			queue->Enqueue(currentNode->rLink);
 
@@ -145,26 +145,26 @@ void BinaryTree<T>::Add(T element)
 {
 	if (root == nullptr)
 	{
-		root = new Node<T>(element);
+		root = new BinaryTreeNode<T>(element);
 		queue->Enqueue(root);
 	}
 
 	else
 	{
-		Node<T>* currentNode;
+		BinaryTreeNode<T>* currentNode;
 
 		currentNode = queue->Peek();
 
 		if (currentNode->lLink == nullptr)
 		{
-			currentNode->lLink = new Node<T>(element);
+			currentNode->lLink = new BinaryTreeNode<T>(element);
 
 			queue->Enqueue(currentNode->lLink);
 		}
 
 		else if (currentNode->rLink == nullptr)
 		{
-			currentNode->rLink = new Node<T>(element);
+			currentNode->rLink = new BinaryTreeNode<T>(element);
 
 			queue->Enqueue(currentNode->rLink);
 
@@ -175,7 +175,7 @@ void BinaryTree<T>::Add(T element)
 }
 
 template<class T>
-void BinaryTree<T>::PreorderTraversal(Node<T>* node)
+void BinaryTree<T>::PreorderTraversal(BinaryTreeNode<T>* node)
 {
 	if (node != nullptr)
 	{
@@ -186,7 +186,7 @@ void BinaryTree<T>::PreorderTraversal(Node<T>* node)
 }
 
 template<class T>
-void BinaryTree<T>::PostorderTraversal(Node<T>* node)
+void BinaryTree<T>::PostorderTraversal(BinaryTreeNode<T>* node)
 {
 	if (node != nullptr)
 	{
@@ -198,7 +198,7 @@ void BinaryTree<T>::PostorderTraversal(Node<T>* node)
 }
 
 template<class T>
-void BinaryTree<T>::InorderTraversal(Node<T>* node)
+void BinaryTree<T>::InorderTraversal(BinaryTreeNode<T>* node)
 {
 	if (node != nullptr)
 	{
@@ -211,11 +211,11 @@ void BinaryTree<T>::InorderTraversal(Node<T>* node)
 template<class T>
 void BinaryTree<T>::LevelorderTraversal()
 {
-	Queue<Node<T>*>* newQueue = new Queue<Node<T>*>();
+	Queue<BinaryTreeNode<T>*>* newQueue = new Queue<BinaryTreeNode<T>*>();
 
 	newQueue->Enqueue(root);
 
-	Node<int>* currentNode;
+	BinaryTreeNode<int>* currentNode;
 
 	while (!newQueue->IsEmpty())
 	{
@@ -238,7 +238,7 @@ void BinaryTree<T>::LevelorderTraversal()
 }
 
 template<class T>
-int BinaryTree<T>::Count(Node<T>* node)
+int BinaryTree<T>::Count(BinaryTreeNode<T>* node)
 {
 	int x;
 	int y;
@@ -254,7 +254,7 @@ int BinaryTree<T>::Count(Node<T>* node)
 }
 
 template<class T>
-int BinaryTree<T>::CalcHeight(Node<T>* node)
+int BinaryTree<T>::CalcHeight(BinaryTreeNode<T>* node)
 {
 	int x;
 	int y;
@@ -275,7 +275,7 @@ int BinaryTree<T>::CalcHeight(Node<T>* node)
 }
 
 template<class T>
-inline int BinaryTree<T>::CalcNumOfLeafNodes(Node<T>* node)
+inline int BinaryTree<T>::CalcNumOfLeafNodes(BinaryTreeNode<T>* node)
 {
 	int x;
 	int y;
@@ -297,7 +297,7 @@ inline int BinaryTree<T>::CalcNumOfLeafNodes(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::RecursiveBinarySearch(Node<T>* node, T key)
+BinaryTreeNode<T>* BinaryTree<T>::RecursiveBinarySearch(BinaryTreeNode<T>* node, T key)
 {
 	if (node == nullptr) return nullptr;
 
@@ -318,9 +318,9 @@ Node<T>* BinaryTree<T>::RecursiveBinarySearch(Node<T>* node, T key)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::IterativeBinarySearch(T key)
+BinaryTreeNode<T>* BinaryTree<T>::IterativeBinarySearch(T key)
 {
-	Node <T>* currentNode = root;
+	BinaryTreeNode <T>* currentNode = root;
 
 	while (currentNode != nullptr)
 	{
@@ -348,12 +348,12 @@ bool BinaryTree<T>::InsertElementInBinaryTree(T key)
 {
 	if (root == nullptr)
 	{
-		root = new Node<T>(key);
+		root = new BinaryTreeNode<T>(key);
 		return true;
 	}
 
-	Node <T>* currentNode = root;
-	Node<T>* tailNode = root;
+	BinaryTreeNode <T>* currentNode = root;
+	BinaryTreeNode<T>* tailNode = root;
 
 	bool onRightSide = false;
 
@@ -381,22 +381,22 @@ bool BinaryTree<T>::InsertElementInBinaryTree(T key)
 
 	if (onRightSide)
 	{
-		tailNode->rLink = new Node<T>(key);
+		tailNode->rLink = new BinaryTreeNode<T>(key);
 	}
 
 	else
 	{
-		tailNode->lLink = new Node<T>(key);
+		tailNode->lLink = new BinaryTreeNode<T>(key);
 	}
 
 	return true;
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::LLRotation(BinaryTreeNode<T>* node)
 {
-	Node<T>* A = node;
-	Node<T>* B = A->lLink;
+	BinaryTreeNode<T>* A = node;
+	BinaryTreeNode<T>* B = A->lLink;
 	A->lLink = B->rLink;
 
 	B->rLink = A;
@@ -411,11 +411,11 @@ Node<T>* BinaryTree<T>::LLRotation(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::LRRotation(BinaryTreeNode<T>* node)
 {
-	Node<T>* A = node;
-	Node<T>* B = A->lLink;
-	Node<T>* C = B->rLink;
+	BinaryTreeNode<T>* A = node;
+	BinaryTreeNode<T>* B = A->lLink;
+	BinaryTreeNode<T>* C = B->rLink;
 
 	A->lLink = C->rLink;
 	B->rLink = C->lLink;
@@ -430,10 +430,10 @@ Node<T>* BinaryTree<T>::LRRotation(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::RRRotation(Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::RRRotation(BinaryTreeNode<T>* node)
 {
-	Node<T>* A = node;
-	Node<T>* B = node->rLink;
+	BinaryTreeNode<T>* A = node;
+	BinaryTreeNode<T>* B = node->rLink;
 	A->rLink = B->lLink;
 	B->lLink = A;
 
@@ -447,11 +447,11 @@ Node<T>* BinaryTree<T>::RRRotation(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::RLRotation(Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::RLRotation(BinaryTreeNode<T>* node)
 {
-	Node<T>* A = node;
-	Node<T>* B = A->rLink;
-	Node<T>* C = B->lLink;
+	BinaryTreeNode<T>* A = node;
+	BinaryTreeNode<T>* B = A->rLink;
+	BinaryTreeNode<T>* C = B->lLink;
 
 	A->rLink = C->lLink;
 	B->lLink = C->rLink;
@@ -468,11 +468,11 @@ Node<T>* BinaryTree<T>::RLRotation(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key)
+BinaryTreeNode<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(BinaryTreeNode<T>*& node, T key)
 {
 	if (node == nullptr)
 	{
-		node = new Node<T>(key);
+		node = new BinaryTreeNode<T>(key);
 	}
 
 	else if (key > node->data)
@@ -512,7 +512,7 @@ Node<T>* BinaryTree<T>::RecursiveInsertElementInBinaryTree(Node<T>*& node, T key
 }
 
 template<class T>
-inline Node<T>* BinaryTree<T>::FindPrecessor(Node<T>* node)
+inline BinaryTreeNode<T>* BinaryTree<T>::FindPrecessor(BinaryTreeNode<T>* node)
 {
 	if (node->rLink == nullptr)
 		return node;
@@ -521,7 +521,7 @@ inline Node<T>* BinaryTree<T>::FindPrecessor(Node<T>* node)
 }
 
 template<class T>
-inline Node<T>* BinaryTree<T>::FindSuccessor(Node<T>* node)
+inline BinaryTreeNode<T>* BinaryTree<T>::FindSuccessor(BinaryTreeNode<T>* node)
 {
 	if (node->lLink == nullptr)
 		return node;
@@ -530,7 +530,7 @@ inline Node<T>* BinaryTree<T>::FindSuccessor(Node<T>* node)
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::DeleteElement(T key, Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::DeleteElement(T key, BinaryTreeNode<T>* node)
 {
 	if (node == nullptr) return nullptr;
 
@@ -552,13 +552,13 @@ Node<T>* BinaryTree<T>::DeleteElement(T key, Node<T>* node)
 
 		if (node->lLink != nullptr)
 		{
-			Node<T>* p = FindPrecessor(node->lLink);
+			BinaryTreeNode<T>* p = FindPrecessor(node->lLink);
 			node->data = p->data;
 			node->lLink = DeleteElement(p->data, p);
 		}
 		else
 		{
-			Node<T>* p = FindSuccessor(node->rLink);
+			BinaryTreeNode<T>* p = FindSuccessor(node->rLink);
 			node->data = p->data;
 			node->rLink = DeleteElement(p->data, p);
 		}
@@ -572,9 +572,9 @@ Node<T>* BinaryTree<T>::DeleteElement(T key, Node<T>* node)
 template<class T>
 void BinaryTree<T>::CreateBinarySearchTreeUsingPreorder(T arr[], int size)
 {
-	Stack<Node<T>*> stack;
-	root = new Node<T>(arr[0]);
-	Node<T>* p = root;
+	Stack<BinaryTreeNode<T>*> stack;
+	root = new BinaryTreeNode<T>(arr[0]);
+	BinaryTreeNode<T>* p = root;
 	int i = 1;
 
 	while (i < size)
@@ -582,7 +582,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPreorder(T arr[], int size)
 		if (arr[i] < p->data)
 		{
 			stack.Push(p);
-			p->lLink = new Node<T>(arr[i]);
+			p->lLink = new BinaryTreeNode<T>(arr[i]);
 			p = p->lLink;
 			i++;
 		}
@@ -598,7 +598,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPreorder(T arr[], int size)
 
 			else
 			{
-				Node<T>* topNode = stack.top->data;
+				BinaryTreeNode<T>* topNode = stack.top->data;
 
 				if (topNode != nullptr)
 				{
@@ -613,7 +613,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPreorder(T arr[], int size)
 			}
 			if (dataAtHighLevel > arr[i])
 			{
-				p->rLink = new Node<T>(arr[i]);
+				p->rLink = new BinaryTreeNode<T>(arr[i]);
 				p = p->rLink;
 				i++;
 			}
@@ -643,13 +643,13 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 {
 	int i = size - 1;
 
-	root = new Node<T>(arr[i]);
+	root = new BinaryTreeNode<T>(arr[i]);
 
 	i--;
 
-	Node<T>* p = root;
+	BinaryTreeNode<T>* p = root;
 
-	Stack<Node<T>*> stack;
+	Stack<BinaryTreeNode<T>*> stack;
 
 	stack.Push(root);
 
@@ -658,7 +658,7 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 		if (arr[i] > p->data)
 		{
 			stack.Push(p);
-			p->rLink = new Node<T>(arr[i]);
+			p->rLink = new BinaryTreeNode<T>(arr[i]);
 			p = p->rLink;
 			i--;
 		}
@@ -667,18 +667,18 @@ void BinaryTree<T>::CreateBinarySearchTreeUsingPostorder(T arr[], int size)
 		{
 			if (stack.IsEmpty())
 			{
-				p->lLink = new Node<T>(arr[i]);
+				p->lLink = new BinaryTreeNode<T>(arr[i]);
 				p = p->lLink;
 				i--;
 			}
 
 			else
 			{
-				Node <T>* tempNode = stack.top->data;
+				BinaryTreeNode <T>* tempNode = stack.top->data;
 
 				if (tempNode->data < arr[i])
 				{
-					p->lLink = new Node<T>(arr[i]);
+					p->lLink = new BinaryTreeNode<T>(arr[i]);
 					p = p->lLink;
 					i--;
 				}
@@ -700,7 +700,7 @@ void BinaryTree<T>::CheckAVLTree()
 }
 
 template<class T>
-Node<T>* BinaryTree<T>::CheckAVLNode(Node<T>* node)
+BinaryTreeNode<T>* BinaryTree<T>::CheckAVLNode(BinaryTreeNode<T>* node)
 {
 	if (node == nullptr)
 	{

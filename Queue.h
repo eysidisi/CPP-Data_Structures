@@ -1,11 +1,11 @@
 #pragma once
-#include "Node.h"
+#include "BinaryTreeNode.h"
 
 template<class T>
 class Queue
 {
-	Node<T>* front;
-	Node<T>* rear;
+	BinaryTreeNode<T>* front;
+	BinaryTreeNode<T>* rear;
 
 public:
 	Queue();
@@ -29,7 +29,7 @@ Queue<T>::~Queue()
 {
 	while (rear != nullptr)
 	{
-		Node<T>* tempNode = rear->rLink;
+		BinaryTreeNode<T>* tempNode = rear->rLink;
 		delete(rear);
 		rear = tempNode;
 	}
@@ -40,12 +40,12 @@ void Queue<T>::Enqueue(T data)
 {
 	if (front == nullptr)
 	{
-		front = rear = new Node<T>(data);
+		front = rear = new BinaryTreeNode<T>(data);
 	}
 
 	else
 	{
-		Node<T>* newNode = new Node<T>(data);
+		BinaryTreeNode<T>* newNode = new BinaryTreeNode<T>(data);
 		front->rLink = newNode;
 		newNode->lLink = front;
 		front = newNode;
@@ -67,7 +67,7 @@ T Queue<T>::Dequeue()
 
 	else
 	{
-		Node<T>* nodeToDelete = rear;
+		BinaryTreeNode<T>* nodeToDelete = rear;
 		rear = rear->rLink;
 		delete(nodeToDelete);
 	}
