@@ -12,14 +12,9 @@ int main()
 {
 	TwoThreeTree tree;
 
-	tree.AddElement(7);
-	tree.AddElement(6);
 	tree.AddElement(5);
-	tree.AddElement(4);
-	tree.AddElement(3);
-	tree.AddElement(2);
-	tree.AddElement(1);
-
+	tree.AddElement(6);
+	tree.AddElement(7);
 
 	return 0;
 }
