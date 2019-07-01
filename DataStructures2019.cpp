@@ -6,15 +6,10 @@
 #include "Queue.h"
 #include "Stack.h"
 #include "BinaryTree.h"
-#include "TwoThreeTree.h"
 
 int main()
 {
-	TwoThreeTree tree;
 
-	tree.AddElement(5);
-	tree.AddElement(6);
-	tree.AddElement(7);
 
 	return 0;
 }

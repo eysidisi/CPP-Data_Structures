@@ -1,4 +1,2 @@
-﻿  TwoThreeTree.cpp
-  C:\Users\Aliihsan\Desktop\DataStructures\DataStructures\TwoThreeTree.cpp(157) : warning C4715: 'TwoThreeTree::InsertWithRecursion': not all control paths return a value
-  C:\Users\Aliihsan\Desktop\DataStructures\DataStructures\TwoThreeTree.cpp(254) : warning C4715: 'TwoThreeTree::InsertParentNode': not all control paths return a value
+﻿  DataStructures2019.cpp
   DataStructures2019.vcxproj -> C:\Users\Aliihsan\Desktop\DataStructures\DataStructures\x64\Debug\DataStructures2019.exe
