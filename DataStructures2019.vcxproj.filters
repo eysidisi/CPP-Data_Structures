@@ -18,12 +18,6 @@
     <ClCompile Include="DataStructures2019.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TwoThreeTreeNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TwoThreeTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue.h">
@@ -36,12 +30,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BinaryTreeNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TwoThreeTreeNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TwoThreeTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

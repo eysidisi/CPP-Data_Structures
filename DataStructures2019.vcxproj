@@ -152,16 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataStructures2019.cpp" />
-    <ClCompile Include="TwoThreeTree.cpp" />
-    <ClCompile Include="TwoThreeTreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BinaryTreeNode.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="TwoThreeTree.h" />
-    <ClInclude Include="TwoThreeTreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
