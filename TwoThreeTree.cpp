@@ -137,10 +137,10 @@ TwoThreeTreeNode* TwoThreeTree::InsertParentNode(TwoThreeTreeNode* node,int key)
 		{
 			node->parentNode->parentNode = InsertParentNode(node->parentNode, node->parentNode->lowKey);
 			node->parentNode->lowKey = key;
-			node->parentNode->SetIsHighKeyOccupied(false);
 
 			TwoThreeTreeNode* newNode = new TwoThreeTreeNode();
 			newNode->lowKey = node->parentNode->highKey;
+			node->parentNode->SetIsHighKeyOccupied(false);
 
 			newNode->parentNode = node->parentNode->parentNode;
 			newNode->leftChild = node->parentNode->middleChild;
