@@ -20,6 +20,17 @@ int main()
 	heap.AddElement(25);
 	heap.AddElement(30);
 
+	printf("Deleted element: %d \n",heap.Delete());
 	heap.DisplayLevelorder();
+	printf("\n");
+	printf("Deleted element: %d \n", heap.Delete());
+	heap.DisplayLevelorder();
+	printf("\n");
+	printf("Deleted element: %d \n", heap.Delete());
+	heap.DisplayLevelorder();
+	printf("\n");
+	printf("Deleted element: %d \n", heap.Delete());
+	heap.DisplayLevelorder();
+
 	return 0;
 }

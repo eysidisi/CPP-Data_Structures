@@ -14,5 +14,6 @@ public:
 	~Heap();
 	void AddElement(int element);
 	void DisplayLevelorder();
+	int Delete();
 };
 

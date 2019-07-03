@@ -27,7 +27,7 @@ void Heap::AddElement(int element)
 
 	while (currentPos > 0)
 	{
-		int parentNodeIndex = floor((currentPos-1) / 2);
+		int parentNodeIndex = floor((currentPos - 1) / 2);
 
 		if (arr[currentPos] > arr[parentNodeIndex])
 		{
@@ -64,4 +64,46 @@ void Heap::DisplayLevelorder()
 
 		i++;
 	}
+}
+
+int Heap::Delete()
+{
+	int valueToReturn = arr[0];
+
+	arr[0] = arr[size - 1];
+	size--;
+	int currentNodeIndex = 0;
+	int leftChildIndex = 1;
+	int rightChildIndex = 2;
+
+	while (leftChildIndex < size - 1)
+	{
+		if ((rightChildIndex <= size - 1) && (arr[rightChildIndex] > arr[leftChildIndex] )&&
+			(arr[rightChildIndex] > arr[currentNodeIndex]))
+		{
+			int temp = arr[rightChildIndex];
+			arr[rightChildIndex] = arr[currentNodeIndex];
+			arr[currentNodeIndex] = temp;
+			currentNodeIndex = rightChildIndex;
+			leftChildIndex = currentNodeIndex * 2 + 1;
+			rightChildIndex = leftChildIndex + 1;
+		}
+
+		else if (arr[leftChildIndex] > arr[currentNodeIndex])
+		{
+			int temp = arr[leftChildIndex];
+			arr[leftChildIndex] = arr[currentNodeIndex];
+			arr[currentNodeIndex] = temp;
+			currentNodeIndex = leftChildIndex;
+			leftChildIndex = currentNodeIndex * 2 + 1;
+			rightChildIndex = leftChildIndex + 1;
+		}
+
+		else
+		{
+			break;
+		}
+	}
+
+	return valueToReturn;
 }
