@@ -5,15 +5,21 @@
 class Heap
 {
 private:
-	int size;
 	int capacity;
-	int *arr;
+	int* arr;
+	int size;
+
 
 public:
-	Heap(int _capacity=10);
+	Heap(int _capacity = 10);
 	~Heap();
 	void AddElement(int element);
 	void DisplayLevelorder();
 	int Delete();
+	void SortInIncreasingOrder();
+	void SortInDecreasingOrder();
+	void DisplayArr();
+	void Heapify();
+
 };
 

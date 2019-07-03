@@ -12,25 +12,6 @@ int main()
 {
 	Heap heap;
 	
-	heap.AddElement(11);
-	heap.AddElement(12);
-	heap.AddElement(20);
-	heap.AddElement(7);
-	heap.AddElement(8);
-	heap.AddElement(25);
-	heap.AddElement(30);
-
-	printf("Deleted element: %d \n",heap.Delete());
 	heap.DisplayLevelorder();
-	printf("\n");
-	printf("Deleted element: %d \n", heap.Delete());
-	heap.DisplayLevelorder();
-	printf("\n");
-	printf("Deleted element: %d \n", heap.Delete());
-	heap.DisplayLevelorder();
-	printf("\n");
-	printf("Deleted element: %d \n", heap.Delete());
-	heap.DisplayLevelorder();
-
 	return 0;
 }
