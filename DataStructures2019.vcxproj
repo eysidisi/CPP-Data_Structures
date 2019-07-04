@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BinaryTreeNode.h" />
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />

@@ -7,11 +7,18 @@
 #include "Stack.h"
 #include "BinaryTree.h"
 #include "Heap.h"
+#include "BubbleSort.h"	
 
 int main()
 {
-	Heap heap;
-	
-	heap.DisplayLevelorder();
+	int arr[5] = { 2,1,14,22,3 };
+
+	BubbleSort<int>::Sort(arr, 5);
+
+	for (size_t i = 0; i < 5; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+
 	return 0;
 }
