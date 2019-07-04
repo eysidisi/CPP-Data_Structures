@@ -153,12 +153,17 @@
   <ItemGroup>
     <ClCompile Include="DataStructures2019.cpp" />
     <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="ListNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BinaryTreeNode.h" />
     <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="ListNode.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>

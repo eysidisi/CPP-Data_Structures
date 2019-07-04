@@ -8,17 +8,21 @@
 #include "BinaryTree.h"
 #include "Heap.h"
 #include "BubbleSort.h"	
+#include "LinkedList.h"
 
 int main()
 {
-	int arr[5] = { 2,1,14,22,3 };
+	LinkedList list;
 
-	BubbleSort<int>::Sort(arr, 5);
+	list.AddElement(5);
+	list.AddElement(4);
+	list.AddElement(3);
+	list.AddElement(52);
+	list.AddElement(-4);
+	list.AddElement(1);
 
-	for (size_t i = 0; i < 5; i++)
-	{
-		printf("%d ", arr[i]);
-	}
+	list.UseInsertionSort();
+	list.Display();
 
 	return 0;
 }
