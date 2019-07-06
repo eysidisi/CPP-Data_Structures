@@ -7,22 +7,21 @@
 #include "Stack.h"
 #include "BinaryTree.h"
 #include "Heap.h"
-#include "BubbleSort.h"	
 #include "LinkedList.h"
+#include "Sort.h"
 
 int main()
 {
-	LinkedList list;
+	const int size = 8;
 
-	list.AddElement(5);
-	list.AddElement(4);
-	list.AddElement(3);
-	list.AddElement(52);
-	list.AddElement(-4);
-	list.AddElement(1);
+	int arr[size] = { 5,1,7,2,12,0,52,-20 };
 
-	list.UseInsertionSort();
-	list.Display();
+	Sort::QuickSort(arr, size);
+
+	for (size_t i = 0; i < size; i++)
+	{
+		printf("%d ", arr[i]);
+	}
 
 	return 0;
 }

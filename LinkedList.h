@@ -14,6 +14,6 @@ public:
 public:
 	void AddElement(int element);
 	void Display(); 
-	void UseInsertionSort();
+ 	void UseInsertionSort();
 };
 
