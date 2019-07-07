@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+      <FILENAME>LinkedList.cpp</FILENAME>
+      <LINE>76</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>28182</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer. 'nodeToInsert' contains the same NULL value as 'nodeToInsert-&gt;nextNode' did. </DESCRIPTION>
+    <FUNCTION>LinkedList::UseInsertionSort</FUNCTION>
+    <DECORATED>?UseInsertionSort@LinkedList@@QEAAXXZ</DECORATED>
+    <FUNCLINE>60</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>67</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>69</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>70</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>28</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'nextNode' may be NULL (Skip this branch)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>94</LINE>
+        <COLUMN>30</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume 'nodeToInsert-&gt;nextNode!=0')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>96</LINE>
+        <COLUMN>37</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>99</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>101</LINE>
+        <COLUMN>30</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'nodeToInsert-&gt;prevNode!=0' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>32</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Continue this loop, (assume 'i&lt;size-1')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>15</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>alias</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>(alias) 'nodeToInsert' receives the value of 'nextNode' (which may be NULL)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>8</COLUMN>
+        <KEYEVENT>
+          <ID>6</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'nodeToInsert' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+      <FILENAME>LinkedList.cpp</FILENAME>
+      <LINE>77</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>28182</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer. 'nextNode' contains the same NULL value as 'nodeToInsert-&gt;nextNode' did. See line 76 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>LinkedList::UseInsertionSort</FUNCTION>
+    <DECORATED>?UseInsertionSort@LinkedList@@QEAAXXZ</DECORATED>
+    <FUNCLINE>60</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>62</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>67</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>68</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>69</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>70</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>10</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>19</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>11</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>81</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>12</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>87</LINE>
+        <COLUMN>28</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>88</LINE>
+        <COLUMN>36</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>90</LINE>
+        <COLUMN>28</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'nextNode' may be NULL (Skip this branch)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>93</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>94</LINE>
+        <COLUMN>30</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Enter this branch, (assume 'nodeToInsert-&gt;nextNode!=0')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>96</LINE>
+        <COLUMN>37</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>99</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>101</LINE>
+        <COLUMN>30</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'nodeToInsert-&gt;prevNode!=0' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>106</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>32</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>72</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Continue this loop, (assume 'i&lt;size-1')</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>74</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Ali ihsan\Desktop\DataStructures\</FILEPATH>
+        <FILENAME>LinkedList.cpp</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>11</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'nextNode' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

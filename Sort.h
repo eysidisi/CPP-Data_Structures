@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdio>
+#include <math.h>
 namespace Sort
 {
 	/// Startpoint is inclusive
@@ -89,8 +90,8 @@ namespace Sort
 		int startIndex = 1;
 		int endIndex = size - 1;
 		int elementToSort = arr[0];
-		
-		while ( startIndex != endIndex)
+
+		while (startIndex != endIndex)
 		{
 			if (arr[startIndex] < elementToSort)
 			{
@@ -136,4 +137,123 @@ namespace Sort
 		}
 	}
 
+	void Swap(int* p, int* q)
+	{
+		int temp = *p;
+		*p = *q;
+		*q = temp;
+	}
+
+	int Partition(int arr[], int p, int q)
+	{
+		int i = p;
+		int j = p + 1;
+		while (j < q)
+		{
+			if (arr[j] <= arr[p])
+			{
+				i++;
+				Swap(&arr[i], &arr[j]);
+			}
+			j++;
+		}
+
+		Swap(&arr[i], &arr[p]);
+		return i;
+	}
+
+	void QuickSortDifferentImplementation(int arr[], int p, int q)
+	{
+		if (q > p)
+		{
+			int r = Partition(arr, p, q);
+			QuickSortDifferentImplementation(arr, p, r - 1);
+			QuickSortDifferentImplementation(arr, r + 1, q);
+		}
+	}
+
+	int* MergeTwoSortedArrays(int arr1[], int arr2[], int size1, int size2)
+	{
+		int* newArr = new int[(size_t)size1 + (size_t)size2];
+		int i = 0;
+		int j = 0;
+		int k = 0;
+
+		while (i < size1 && j < size2)
+		{
+			if (arr1[i] <= arr2[j])
+			{
+				newArr[k] = arr1[i];
+				i++;
+				k++;
+			}
+
+			else
+			{
+				newArr[k] = arr2[j];
+				j++;
+				k++;
+			}
+		}
+
+		if (i < size1)
+		{
+			while (i < size1)
+			{
+				newArr[k] = arr1[i];
+				k++;
+				i++;
+			}
+		}
+
+		else
+		{
+			while (j < size2)
+			{
+				newArr[k] = arr2[j];
+				k++;
+				j++;
+			}
+		}
+
+		return newArr;
+	}
+
+	int* MergeSort(int arr[], int startIndex, int endingIndex)
+	{
+		int midP = ceil((endingIndex - startIndex) / 2.0);
+
+		if (midP == 0)
+		{
+			return &arr[startIndex];
+		}
+
+		int* arr1;
+		int* arr2;
+
+
+		if (endingIndex == startIndex + 1)
+		{
+			arr1 = MergeSort(arr, startIndex, startIndex);
+			arr2 = MergeSort(arr, endingIndex, endingIndex);
+		}
+
+		else
+		{
+			arr1 = MergeSort(arr, startIndex, midP - 1);
+			arr2 = MergeSort(arr, midP, endingIndex);
+		}
+
+
+		int size1 = midP - startIndex;
+		int size2 = endingIndex - midP + 1;
+
+		int* returnArr = new int[size1 + size2];
+
+		returnArr = MergeTwoSortedArrays(&arr1[0], &arr2[0], size1, size2);
+
+
+		return returnArr;
+	}
 }
+

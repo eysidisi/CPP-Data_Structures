@@ -12,15 +12,18 @@
 
 int main()
 {
-	const int size = 8;
+	const int size1 = 10;
+	const int size2 = 3;
 
-	int arr[size] = { 5,1,7,2,12,0,52,-20 };
+	int arr1[size1] = { 2,4,5,7,8,9,12,45,60,111 };
+	int* arr2 = new int[3]{ 10,7,2 };
 
-	Sort::QuickSort(arr, size);
 
-	for (size_t i = 0; i < size; i++)
+	arr2 = Sort::MergeSort(arr2, 0, 2);
+
+	for (size_t i = 0; i < size2; i++)
 	{
-		printf("%d ", arr[i]);
+		printf("%d ", arr2[i]);
 	}
 
 	return 0;
