@@ -1,0 +1,6 @@
+﻿1>------ Build started: Project: DataStructures2019, Configuration: Debug x64 ------
+1>DataStructures2019.cpp
+1>C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(68,31): warning C4267:  '=': conversion from 'size_t' to 'int', possible loss of data
+1>DataStructures2019.vcxproj -> C:\Users\Ali ihsan\Desktop\DataStructures\x64\Debug\DataStructures2019.exe
+1>Done building project "DataStructures2019.vcxproj".
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

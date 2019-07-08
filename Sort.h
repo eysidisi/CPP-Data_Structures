@@ -221,39 +221,33 @@ namespace Sort
 
 	int* MergeSort(int arr[], int startIndex, int endingIndex)
 	{
-		int midP = ceil((endingIndex - startIndex) / 2.0);
+		static int initialSize = endingIndex - startIndex + 1;
 
-		if (midP == 0)
+		int midP = (endingIndex - startIndex) / 2 + startIndex;
+
+		if (startIndex == endingIndex)
 		{
-			return &arr[startIndex];
+			int* newArr = new int{ arr[startIndex] };
+			return newArr;
 		}
 
-		int* arr1;
-		int* arr2;
+		int* arr1 = MergeSort(arr, startIndex, midP);
+		int* arr2 = MergeSort(arr, midP+1, endingIndex);
 
+		int size1 = midP - startIndex + 1;
+		int size2 = endingIndex - (midP + 1) + 1;
 
-		if (endingIndex == startIndex + 1)
+		int* newArr = MergeTwoSortedArrays(arr1, arr2, size1, size2);
+
+		delete(arr1);
+		delete(arr2);
+
+		if (endingIndex - startIndex + 1 == initialSize)
 		{
-			arr1 = MergeSort(arr, startIndex, startIndex);
-			arr2 = MergeSort(arr, endingIndex, endingIndex);
+			delete(arr);
 		}
 
-		else
-		{
-			arr1 = MergeSort(arr, startIndex, midP - 1);
-			arr2 = MergeSort(arr, midP, endingIndex);
-		}
-
-
-		int size1 = midP - startIndex;
-		int size2 = endingIndex - midP + 1;
-
-		int* returnArr = new int[size1 + size2];
-
-		returnArr = MergeTwoSortedArrays(&arr1[0], &arr2[0], size1, size2);
-
-
-		return returnArr;
+		return newArr;
 	}
 }
 
