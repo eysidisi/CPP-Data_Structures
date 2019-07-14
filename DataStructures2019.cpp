@@ -9,19 +9,27 @@
 #include "Heap.h"
 #include "LinkedList.h"
 #include "Sort.h"
+#include "ChainHashTable.h"
+#include "LinearProbingHashTable.h"
 
 int main()
 {
-	const int size = 6;
+	LinearProbingHashTable hashTable;
 
-	int arr[size] = { 1,12,144,1,7,-13 };
+	hashTable.AddElement(3);
 
-	Sort::ShellSort(arr, size);
+	hashTable.Display();
 
-	for (size_t i = 0; i < size; i++)
-	{
-		printf("%d ", arr[i]);
-	}
+	hashTable.DeleteElement(3);
+
+	hashTable.AddElement(103);
+
+	hashTable.AddElement(27);
+	hashTable.DeleteElement(21);
+	hashTable.Display();
+
+	
+
 
 	return 0;
 }

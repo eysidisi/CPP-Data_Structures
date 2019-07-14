@@ -13,6 +13,8 @@ public:
 
 public:
 	void AddElement(int element);
+	bool DeleteElement(int element);
+	bool FindElement(int element);
 	void Display(); 
  	void UseInsertionSort();
 };

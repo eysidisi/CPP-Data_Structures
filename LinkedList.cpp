@@ -44,11 +44,75 @@ void LinkedList::AddElement(int element)
 
 		size++;
 	}
+
+	UseInsertionSort();
+}
+
+bool LinkedList::DeleteElement(int element)
+{
+	if (root == nullptr)
+		return false;
+
+	ListNode* ptr = root;
+
+	while (ptr != nullptr && ptr->data <= element)
+	{
+		if (ptr->data == element )
+		{
+			if (ptr->prevNode != nullptr)
+			{
+				ptr->prevNode->nextNode = ptr->nextNode;
+			}
+
+			else
+			{
+				root = ptr->nextNode;
+			}
+			
+			if (ptr->nextNode != nullptr)
+			{
+				ptr->nextNode->prevNode = ptr->prevNode;
+			}
+
+			delete(ptr);
+
+			return true;
+		}
+
+		ptr = ptr->nextNode;
+	}
+
+	return false;
+}
+
+bool LinkedList::FindElement(int element)
+{
+	if (root == nullptr)
+		return false;
+
+	ListNode* ptr = root;
+
+	while (ptr != nullptr && ptr->data <= element)
+	{
+		if (ptr->data == element)
+		{
+			return true;
+		}
+
+		ptr = ptr->nextNode;
+	}
+
+	return false;
 }
 
 void LinkedList::Display()
 {
 	ListNode* currentNode = root;
+
+	if (currentNode == nullptr)
+	{
+		printf("List is empty \n");
+	}
 
 	while (currentNode != nullptr)
 	{

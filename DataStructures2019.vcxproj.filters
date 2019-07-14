@@ -27,6 +27,12 @@
     <ClCompile Include="ListNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ChainHashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearProbingHashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Queue.h">
@@ -51,6 +57,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChainHashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearProbingHashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

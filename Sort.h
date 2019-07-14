@@ -430,7 +430,7 @@ namespace Sort
 
 	}
 
-	void RadixSort(int* arr, int size)
+	void RadixSort(int* arr, size_t size)
 	{
 		int maxElement = FindMax(arr, size);
 		int minElement = FindMin(arr, size);
