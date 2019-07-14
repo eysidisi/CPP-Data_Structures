@@ -12,11 +12,11 @@
 
 int main()
 {
-	const int size = 5;
+	const int size = 6;
 
-	int* arr = new int[size] {3, 2, 7, 10,22};
+	int arr[size] = { 1,12,144,1,7,-13 };
 
-	arr = Sort::MergeSort(arr, 0, size - 1);
+	Sort::ShellSort(arr, size);
 
 	for (size_t i = 0; i < size; i++)
 	{

@@ -1,9 +1,41 @@
 #pragma once
 #include <cstdio>
 #include <math.h>
+#include "Queue.h"
+
 namespace Sort
 {
-	/// Startpoint is inclusive
+	int FindMin(int* arr, int size)
+	{
+		int minVal = INT32_MAX;
+
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] < minVal)
+			{
+				minVal = arr[i];
+			}
+		}
+
+		return minVal;
+	}
+
+	int FindMax(int* arr, int size)
+	{
+		int maxVal = INT32_MIN;
+
+		for (size_t i = 0; i < size; i++)
+		{
+			if (arr[i] > maxVal)
+			{
+				maxVal = arr[i];
+			}
+		}
+
+		return maxVal;
+	}
+
+	/// startPoint is inclusive
 	void ShiftElementsToLeft(int arr[], int startPoint)
 	{
 		int i = 0;
@@ -14,7 +46,6 @@ namespace Sort
 			i++;
 		}
 	}
-
 
 	void InsertionSort(int arr[], int size)
 	{
@@ -219,7 +250,7 @@ namespace Sort
 		return newArr;
 	}
 
-	int* MergeSort(int arr[], int startIndex, int endingIndex)
+	int* RecursiveMergeSort(int arr[], int startIndex, int endingIndex)
 	{
 		static int initialSize = endingIndex - startIndex + 1;
 
@@ -231,8 +262,8 @@ namespace Sort
 			return newArr;
 		}
 
-		int* arr1 = MergeSort(arr, startIndex, midP);
-		int* arr2 = MergeSort(arr, midP+1, endingIndex);
+		int* arr1 = RecursiveMergeSort(arr, startIndex, midP);
+		int* arr2 = RecursiveMergeSort(arr, midP + 1, endingIndex);
 
 		int size1 = midP - startIndex + 1;
 		int size2 = endingIndex - (midP + 1) + 1;
@@ -248,6 +279,246 @@ namespace Sort
 		}
 
 		return newArr;
+	}
+
+	void Merge(int* arr, int lowIndex, int midP, int highIndex)
+	{
+		int l = lowIndex;
+		int mid = midP + 1;
+		int k = 0;
+
+		int* newArr = new int[highIndex - l + 1];
+
+		while (l <= midP && mid <= highIndex)
+		{
+			if (arr[l] > arr[mid])
+			{
+				newArr[k++] = arr[mid++];
+			}
+
+			else
+			{
+				newArr[k++] = arr[l++];
+			}
+		}
+
+		while (l <= midP)
+		{
+			newArr[k++] = arr[l++];
+		}
+
+		while (mid <= highIndex)
+		{
+			newArr[k++] = arr[mid++];
+		}
+
+		k = 0;
+
+		for (size_t i = lowIndex; i <= highIndex; i++)
+		{
+			arr[i] = newArr[k++];
+		}
+
+		delete[] newArr;
+	}
+
+	void IterativeMergeSort(int* arr, int size)
+	{
+		int p = 2;
+
+		for (; p <= size; p = p * 2)
+		{
+			for (size_t i = 0; i + p - 1 < size; i = i + p)
+			{
+				int l = i;
+				int h = i + p - 1;
+				int mid = l + (h - l) / 2;
+				Merge(arr, l, mid, h);
+			}
+		}
+
+		if (size > p / 2)
+		{
+			Merge(arr, 0, p / 2 - 1, size - 1);
+		}
+	}
+
+	void CountSort(int* arr, int size)
+	{
+		int min = FindMin(arr, size);
+		int max = FindMax(arr, size);
+		int countArrSize = max - min + 1;
+		int* countArr = new int[countArrSize];
+
+		for (size_t i = 0; i < countArrSize; i++)
+		{
+			countArr[i] = 0;
+		}
+
+		for (size_t i = 0; i < size; i++)
+		{
+			countArr[arr[i] - min]++;
+		}
+
+		int countArrIndex = 0;
+		int sourceArrIndex = 0;
+
+		while (sourceArrIndex < size)
+		{
+			if (countArr[countArrIndex] > 0)
+			{
+				arr[sourceArrIndex] = countArrIndex + min;
+				sourceArrIndex++;
+				countArr[countArrIndex]--;
+			}
+
+			else
+			{
+				countArrIndex++;
+			}
+		}
+
+		delete[]countArr;
+	}
+
+	void BinSort(int* arr, int size)
+	{
+		int min = FindMin(arr, size);
+		int max = FindMax(arr, size);
+		int countQueueSize = max - min + 1;
+
+		Queue<int>** queueArr;
+
+		queueArr = new Queue<int> * [countQueueSize];
+
+
+
+		for (size_t i = 0; i < countQueueSize; i++)
+		{
+			queueArr[i] = nullptr;
+		}
+
+		for (size_t i = 0; i < size; i++)
+		{
+			if (queueArr[arr[i] - min] == nullptr)
+				queueArr[arr[i] - min] = new Queue<int>();
+			queueArr[arr[i] - min]->Enqueue(1);
+		}
+
+		int countArrIndex = 0;
+		int sourceArrIndex = 0;
+
+		while (sourceArrIndex < size)
+		{
+			if (queueArr[countArrIndex] != nullptr && !queueArr[countArrIndex]->IsEmpty())
+			{
+				arr[sourceArrIndex] = countArrIndex + min;
+				sourceArrIndex++;
+				queueArr[countArrIndex]->Dequeue();
+			}
+
+			else
+			{
+				countArrIndex++;
+			}
+		}
+
+		for (size_t i = 0; i < countQueueSize; i++)
+		{
+			delete queueArr[i];
+		}
+
+	}
+
+	void RadixSort(int* arr, int size)
+	{
+		int maxElement = FindMax(arr, size);
+		int minElement = FindMin(arr, size);
+
+		bool negativeFlag = false;
+
+		if (minElement < 0)
+		{
+			negativeFlag = true;
+
+			for (size_t i = 0; i < size; i++)
+			{
+				arr[i] = arr[i] - minElement;
+			}
+		}
+
+		int numberOfDecimals = 0;
+		while (maxElement != 0)
+		{
+			maxElement = maxElement / 10;
+			numberOfDecimals++;
+		}
+
+		int queuArrSize = 10;
+
+		Queue<int>** queuArr = new  Queue<int> * [queuArrSize];
+
+		for (size_t i = 0; i < queuArrSize; i++)
+		{
+			queuArr[i] = new Queue<int>();
+		}
+
+		int divisionNumber = 1;
+
+		for (size_t i = 0; i < numberOfDecimals; i++, divisionNumber *= 10)
+		{
+			for (size_t j = 0; j < size; j++)
+			{
+				int indexToInsert = (arr[j] / divisionNumber) % 10;
+
+				queuArr[indexToInsert]->Enqueue(arr[j]);
+			}
+
+			int queuArrIndex = 0;
+			int arrIndex = 0;
+
+			while (arrIndex < size)
+			{
+				if (!queuArr[queuArrIndex]->IsEmpty())
+				{
+					arr[arrIndex] = queuArr[queuArrIndex]->Dequeue();
+					arrIndex++;
+				}
+
+				else
+				{
+					queuArrIndex++;
+				}
+			}
+
+		}
+
+		if (negativeFlag)
+		{
+			for (size_t i = 0; i < size; i++)
+			{
+				arr[i] = arr[i] + minElement;
+			}
+		}
+
+	}
+
+	void ShellSort(int* arr, int size)
+	{
+		for (size_t gap = size / 2; gap >= 1; gap /= 2)
+		{
+			for (size_t arrStartIndex = 0; arrStartIndex + gap < size; arrStartIndex += gap)
+			{
+				size_t searchIndex = arrStartIndex;
+
+				while (arr[searchIndex] > arr[searchIndex + gap] && searchIndex >= 0)
+				{
+					Swap(&arr[searchIndex], &arr[searchIndex + gap]);
+					searchIndex -= gap;
+				}
+
+			}
+		}
 	}
 }
 
