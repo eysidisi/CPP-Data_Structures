@@ -1,5 +1,6 @@
 // DataStructures2019.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+#include <ctime>    // For time()
 
 #include <iostream>
 #include "BinaryTreeNode.h"	
@@ -10,23 +11,23 @@
 #include "LinkedList.h"
 #include "Sort.h"
 #include "ChainHashTable.h"
-#include "LinearProbingHashTable.h"
+#include "ProbingHashTable.h"
 
 int main()
 {
-	LinearProbingHashTable hashTable;
+	srand(time(0));
 
-	hashTable.AddElement(3);
+	ProbingHashTable hashTable(2);
+
+	for (int i = 0; i < 50; i++)
+	{
+		hashTable.AddElement(rand()%1000);
+	}
+
 
 	hashTable.Display();
 
-	hashTable.DeleteElement(3);
-
-	hashTable.AddElement(103);
-
-	hashTable.AddElement(27);
-	hashTable.DeleteElement(21);
-	hashTable.Display();
+	printf(" %d ", hashTable.FindElement(43));
 
 	
 

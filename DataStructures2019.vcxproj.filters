@@ -30,7 +30,7 @@
     <ClCompile Include="ChainHashTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinearProbingHashTable.cpp">
+    <ClCompile Include="ProbingHashTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClInclude Include="ChainHashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LinearProbingHashTable.h">
+    <ClInclude Include="ProbingHashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,16 +14,24 @@ struct Node
 		canWrite = true;
 	}
 };
-
-class LinearProbingHashTable
+///i=0 linearProbing, i=1 quadraticProbing, i=2 doubleHash
+class ProbingHashTable
 {
 private:
 	int size;
 	int capacity;
+	bool isLinearProbingHashTable;
+	bool isQuadraticProbingHashTable;
+	bool isDoubleHash;
 	Node* hashTable;
 
+private:
+	int CalcHashKey(int element, int i);
+	int CalcFOfI(int i,int element);
+
 public:
-	LinearProbingHashTable();
+	ProbingHashTable();
+	ProbingHashTable(int i);
 	void AddElement(int element);
 	bool DeleteElement(int element);
 	void ResizeTable();

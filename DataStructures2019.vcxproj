@@ -154,7 +154,7 @@
     <ClCompile Include="ChainHashTable.cpp" />
     <ClCompile Include="DataStructures2019.cpp" />
     <ClCompile Include="Heap.cpp" />
-    <ClCompile Include="LinearProbingHashTable.cpp" />
+    <ClCompile Include="ProbingHashTable.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="ListNode.cpp" />
   </ItemGroup>
@@ -163,7 +163,7 @@
     <ClInclude Include="BinaryTreeNode.h" />
     <ClInclude Include="ChainHashTable.h" />
     <ClInclude Include="Heap.h" />
-    <ClInclude Include="LinearProbingHashTable.h" />
+    <ClInclude Include="ProbingHashTable.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ListNode.h" />

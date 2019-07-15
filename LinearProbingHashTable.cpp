@@ -1,12 +1,12 @@
-#include "LinearProbingHashTable.h"
+#include "ProbingHashTable.h"
 
-LinearProbingHashTable::LinearProbingHashTable()
+ProbingHashTable::ProbingHashTable()
 	: size(0), capacity(10), hashTable(new Node[10])
 {
 
 }
 
-void LinearProbingHashTable::AddElement(int element)
+void ProbingHashTable::AddElement(int element)
 {
 	if (size + 1 > capacity / 2)
 	{
@@ -29,7 +29,7 @@ void LinearProbingHashTable::AddElement(int element)
 	size++;
 }
 
-bool LinearProbingHashTable::DeleteElement(int element)
+bool ProbingHashTable::DeleteElement(int element)
 {
 	int searchIndex = element % capacity;
 
@@ -48,7 +48,7 @@ bool LinearProbingHashTable::DeleteElement(int element)
 	return false;
 }
 
-void LinearProbingHashTable::ResizeTable()
+void ProbingHashTable::ResizeTable()
 {
 	capacity = capacity * 2;
 
@@ -80,7 +80,7 @@ void LinearProbingHashTable::ResizeTable()
 	hashTable = newTable;
 }
 
-bool LinearProbingHashTable::FindElement(int element)
+bool ProbingHashTable::FindElement(int element)
 {
 	int searchIndex = element % capacity;
 
@@ -97,7 +97,7 @@ bool LinearProbingHashTable::FindElement(int element)
 	return false;
 }
 
-void LinearProbingHashTable::Display()
+void ProbingHashTable::Display()
 {
 	if (size == 0)
 	{
