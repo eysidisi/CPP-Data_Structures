@@ -12,25 +12,17 @@
 #include "Sort.h"
 #include "ChainHashTable.h"
 #include "ProbingHashTable.h"
+#include "Graph.h"
 
 int main()
 {
-	srand(time(0));
-
-	ProbingHashTable hashTable(2);
-
-	for (int i = 0; i < 50; i++)
+	Graph graph(8);
+	while (true)
 	{
-		hashTable.AddElement(rand()%1000);
+		int in;
+		printf("\nEnter value to start search: \n");
+		scanf("%d", &in);
+		graph.RecursiveDepthFirstSearch(in);
 	}
-
-
-	hashTable.Display();
-
-	printf(" %d ", hashTable.FindElement(43));
-
-	
-
-
 	return 0;
 }

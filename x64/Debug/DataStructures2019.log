@@ -1,8 +1,7 @@
-﻿  DataStructures2019.cpp
-C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(99,31): warning C4267:  '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(333,14): warning C4267:  'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(334,22): warning C4267:  'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(435,37): warning C4267:  'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\Sort.h(436,37): warning C4267:  'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\DataStructures2019.cpp(18,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  Graph.cpp
+C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:  'argument': conversion from 'size_t' to 'T', possible loss of data
+C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         with
+C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         [
+C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:             T=int
+C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         ]
   DataStructures2019.vcxproj -> C:\Users\Ali ihsan\Desktop\DataStructures\x64\Debug\DataStructures2019.exe
