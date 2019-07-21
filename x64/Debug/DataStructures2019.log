@@ -1,7 +1,2 @@
-﻿  Graph.cpp
-C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:  'argument': conversion from 'size_t' to 'T', possible loss of data
-C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         with
-C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         [
-C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:             T=int
-C:\Users\Ali ihsan\Desktop\DataStructures\Graph.cpp(126,17): warning C4267:         ]
+﻿  GraphWithWeightedEdges.cpp
   DataStructures2019.vcxproj -> C:\Users\Ali ihsan\Desktop\DataStructures\x64\Debug\DataStructures2019.exe

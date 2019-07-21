@@ -35,7 +35,7 @@ void Graph::EnterElementLinks()
 {
 	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < size; j++)
+		for (int j = 0; j < i; j++)
 		{
 			if ((nodeLinks[i][j] != 1) && (nodeLinks[i][j] != 0))
 			{

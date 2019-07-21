@@ -13,16 +13,12 @@
 #include "ChainHashTable.h"
 #include "ProbingHashTable.h"
 #include "Graph.h"
+#include "GraphWithWeightedEdges.h"
 
 int main()
 {
-	Graph graph(8);
-	while (true)
-	{
-		int in;
-		printf("\nEnter value to start search: \n");
-		scanf("%d", &in);
-		graph.RecursiveDepthFirstSearch(in);
-	}
+	GraphWithWeightedEdges graph(4);
+
+	graph.UsePrimSAlgorithm();
 	return 0;
 }

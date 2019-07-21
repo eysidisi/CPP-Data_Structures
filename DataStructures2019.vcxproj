@@ -154,6 +154,7 @@
     <ClCompile Include="ChainHashTable.cpp" />
     <ClCompile Include="DataStructures2019.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GraphWithWeightedEdges.cpp" />
     <ClCompile Include="Heap.cpp" />
     <ClCompile Include="ProbingHashTable.cpp" />
     <ClCompile Include="LinkedList.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="BinaryTreeNode.h" />
     <ClInclude Include="ChainHashTable.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphWithWeightedEdges.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="ProbingHashTable.h" />
     <ClInclude Include="Sort.h" />
