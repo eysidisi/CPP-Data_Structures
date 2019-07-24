@@ -1,6 +1,29 @@
 #include "GraphWithWeightedEdges.h"
-#include <cstdio>
-#include <climits> 
+
+void GraphWithWeightedEdges::ConvertOneDimToTwoDim(int index, int* row, int* col)
+{
+	int a = 0;
+
+	int rowEquation = ((2 * a * size) - (a * a) - a) / 2;
+
+	while (index >= rowEquation)
+	{
+		a++;
+		rowEquation = ((2 * a * size) - (a * a) - a) / 2;
+	}
+
+	if (a > 0)
+		a--;
+
+	*row = a;
+
+	*col = (index - ((2 * a * size) - (a * a) - a) / 2) + a + 1;
+}
+
+bool GraphWithWeightedEdges::IsConnectedConnection(int* arr, int index)
+{
+	return (arr[index] >= 0);
+}
 
 GraphWithWeightedEdges::GraphWithWeightedEdges(int size)
 	:size(size), linkArr(new int* [size]), numberOfEdges(0)
@@ -123,7 +146,7 @@ void GraphWithWeightedEdges::UsePrimSAlgorithm()
 
 		roadMap[roadMapDestIndex][0] = nodeIndexForSource;
 		roadMap[roadMapDestIndex][1] = nodeIndexForDestination;
-		
+
 		nearArr[nodeIndexForDestination] = -1;
 
 		roadMapDestIndex++;
@@ -133,7 +156,7 @@ void GraphWithWeightedEdges::UsePrimSAlgorithm()
 
 	for (int i = 0; i < roadMapSize; i++)
 	{
-			printf("from: %d to %d \n", roadMap[i][0],roadMap[i][1]);
+		printf("from: %d to %d \n", roadMap[i][0], roadMap[i][1]);
 	}
 
 	for (size_t i = 0; i < 2; i++)
@@ -150,5 +173,87 @@ void GraphWithWeightedEdges::ShowGraph()
 		{
 			printf("From node: %d to node: %d distance is %d \n", i, j, linkArr[i][j]);
 		}
+	}
+}
+
+void GraphWithWeightedEdges::UseKruskalSAlgorithm()
+{
+	int* connectionArr = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		connectionArr[i] = -1;
+	}
+
+	int tableSize = size * (size - 1) / 2;
+
+	int* table = new int[tableSize];
+
+	int* distanceArr = new int[tableSize];
+
+
+
+	for (int i = 0; i < tableSize; i++)
+	{
+		table[i] = i;
+
+		//???
+		distanceArr[i] = i;
+	}
+
+	int k = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			distanceArr[k] = linkArr[i][j];
+			k++;
+		}
+	}
+
+
+	// Use a simple sorting algorithm. Linear sort maybe?
+
+	for (int j = 0; j < tableSize - 1; j++)
+	{
+		bool flag = false;
+		int minElement = distanceArr[j];
+		int minElementIndex = -1;
+
+
+		for (int i = j + 1; i < tableSize; i++)
+		{
+			if (distanceArr[i] < minElement)
+			{
+				minElementIndex = i;
+				minElement = distanceArr[i];
+				flag = true;
+			}
+		}
+
+		if (flag)
+		{
+			int temp = distanceArr[minElementIndex];
+
+			distanceArr[minElementIndex] = distanceArr[j];
+
+			distanceArr[j] = temp;
+
+			temp = table[minElementIndex];
+
+			table[minElementIndex] = table[j];
+
+			table[j] = temp;
+		}
+	}
+
+	for (int i = 0; i < tableSize; i++)
+	{
+		int row = 0;
+		int col = 0;
+
+		ConvertOneDimToTwoDim(table[i], &row, &col);
+
+		IsConnectedConnection(connectionArr, row);
 	}
 }
