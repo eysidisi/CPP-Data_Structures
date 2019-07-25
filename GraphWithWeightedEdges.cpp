@@ -20,17 +20,51 @@ void GraphWithWeightedEdges::ConvertOneDimToTwoDim(int index, int* row, int* col
 	*col = (index - ((2 * a * size) - (a * a) - a) / 2) + a + 1;
 }
 
-bool GraphWithWeightedEdges::IsConnectedConnection(int* arr, int index)
+bool GraphWithWeightedEdges::IsConnectedConnection(int index1, int index2)
 {
-	return (arr[index] >= 0);
+	return (connectionArr[index1][index2] == 1);
+}
+
+void GraphWithWeightedEdges::Connect(int** arr, int nodeA, int nodeB)
+{
+	arr[nodeA][nodeB] = 1;
+	arr[nodeB][nodeA] = 1;
+
+	connectionArr[nodeA][nodeB] = 1;
+	connectionArr[nodeB][nodeA] = 1;
+
+	for (int i = 0; i < size; i++)
+	{
+		if (connectionArr[nodeA][i])
+		{
+
+		}
+	}
+}
+
+bool GraphWithWeightedEdges::CheckIfNodesAreAllConnected()
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (connectionArr[i][j] != 1)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 GraphWithWeightedEdges::GraphWithWeightedEdges(int size)
-	:size(size), linkArr(new int* [size]), numberOfEdges(0)
+	:size(size), linkArr(new int* [size]), numberOfEdges(0), connectionArr(new int* [size])
 {
 	for (size_t i = 0; i < size; i++)
 	{
 		linkArr[i] = new int[size];
+		connectionArr[i] = new int[size];
 	}
 
 	for (int i = 0; i < size; i++)
@@ -61,8 +95,6 @@ GraphWithWeightedEdges::GraphWithWeightedEdges(int size)
 					linkArr[i][j] = INT_MAX;
 					linkArr[j][i] = INT_MAX;
 				}
-
-
 			}
 		}
 	}
@@ -178,11 +210,19 @@ void GraphWithWeightedEdges::ShowGraph()
 
 void GraphWithWeightedEdges::UseKruskalSAlgorithm()
 {
-	int* connectionArr = new int[size];
+	int** usedLinksArr = new int* [size];
 
 	for (int i = 0; i < size; i++)
 	{
-		connectionArr[i] = -1;
+		usedLinksArr[i] = new int[size];
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			usedLinksArr[i][j] = -1;
+		}
 	}
 
 	int tableSize = size * (size - 1) / 2;
@@ -247,6 +287,7 @@ void GraphWithWeightedEdges::UseKruskalSAlgorithm()
 		}
 	}
 
+
 	for (int i = 0; i < tableSize; i++)
 	{
 		int row = 0;
@@ -254,6 +295,43 @@ void GraphWithWeightedEdges::UseKruskalSAlgorithm()
 
 		ConvertOneDimToTwoDim(table[i], &row, &col);
 
-		IsConnectedConnection(connectionArr, row);
+		bool isConnected = IsConnectedConnection(row, col);
+
+		if (row == 2 && col == 4)
+		{
+			printf("asad");
+		}
+
+		if (!isConnected)
+		{
+			Connect(usedLinksArr, row, col);
+			printf("Connection Arr: \n");
+
+			for (int i = 0; i < size; i++)
+			{
+				for (int j = 0; j < size; j++)
+				{
+					printf("ConnArr[%d][%d]: %d \n", i, j, connectionArr[i][j]);
+				}
+			}
+
+			printf("usedLinksArr:\n");
+
+			for (int i = 0; i < size; i++)
+			{
+				for (int j = 0; j < size; j++)
+				{
+					printf("usedLinksArr[%d][%d]: %d \n", i, j, usedLinksArr[i][j]);
+				}
+			}
+
+
+			if (CheckIfNodesAreAllConnected())
+			{
+				break;
+			}
+		}
+
 	}
+
 }
