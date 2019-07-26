@@ -20,51 +20,116 @@ void GraphWithWeightedEdges::ConvertOneDimToTwoDim(int index, int* row, int* col
 	*col = (index - ((2 * a * size) - (a * a) - a) / 2) + a + 1;
 }
 
-bool GraphWithWeightedEdges::IsConnectedConnection(int index1, int index2)
+bool GraphWithWeightedEdges::AreNodesConnected(int* connectionArr, int index1, int index2)
 {
-	return (connectionArr[index1][index2] == 1);
+	while (connectionArr[index1] >= 0)
+	{
+		index1 = connectionArr[index1];
+	}
+
+	while (connectionArr[index2] >= 0)
+	{
+		index2 = connectionArr[index2];
+	}
+
+	if (index1 != -1 && index1 == index2)
+	{
+		return true;
+	}
+
+	return false;
 }
 
-void GraphWithWeightedEdges::Connect(int** arr, int nodeA, int nodeB)
+void GraphWithWeightedEdges::Connect(int* arr, int nodeA, int nodeB)
 {
-	arr[nodeA][nodeB] = 1;
-	arr[nodeB][nodeA] = 1;
-
-	connectionArr[nodeA][nodeB] = 1;
-	connectionArr[nodeB][nodeA] = 1;
-
-	for (int i = 0; i < size; i++)
+	if (arr[nodeA] == -1 && arr[nodeB] != -1)
 	{
-		if (connectionArr[nodeA][i])
-		{
+		arr[nodeA] == nodeB;
 
+		while (arr[nodeB] >= 0)
+		{
+			nodeB = arr[nodeB];
 		}
+
+		arr[nodeB]--;
+	}
+
+	else if (arr[nodeB] == -1 && arr[nodeA] != -1)
+	{
+		arr[nodeB] == nodeA;
+
+		while (arr[nodeA] >= 0)
+		{
+			nodeA = arr[nodeA];
+		}
+
+		arr[nodeA]--;
+	}
+
+	else if (arr[nodeA] == -1 && arr[nodeB] == -1)
+	{
+		arr[nodeA] = nodeB;
+		arr[nodeB]--;
+	}
+
+	else
+	{
+		int tempA = nodeA;
+		int tempB = nodeB;
+
+		while (arr[nodeB] >= 0)
+		{
+			nodeB = arr[nodeB];
+		}
+
+		while (arr[nodeA] >= 0)
+		{
+			nodeA = arr[nodeA];
+		}
+
+		if (nodeA < nodeB)
+		{
+			arr[tempB] = tempA;
+			arr[nodeA]--;
+		}
+
+		else
+		{
+			arr[tempA] = tempB;
+			arr[nodeB]--;
+		}
+
 	}
 }
 
 bool GraphWithWeightedEdges::CheckIfNodesAreAllConnected()
 {
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			if (connectionArr[i][j] != 1)
-			{
-				return false;
-			}
-		}
-	}
-
 	return true;
 }
 
+int GraphWithWeightedEdges::FindUnusedMinLink(int** arr, int size)
+{
+	int minVal = INT_MAX;
+	int minIndex = -1;
+
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[3][i] == 0 && arr[2][i] < minVal)
+		{
+			minIndex = i;
+			minVal = arr[2][i];
+		}
+	}
+
+	return minIndex;
+}
+
 GraphWithWeightedEdges::GraphWithWeightedEdges(int size)
-	:size(size), linkArr(new int* [size]), numberOfEdges(0), connectionArr(new int* [size])
+	:size(size), linkArr(new int* [size]), numberOfEdges(0)
 {
 	for (size_t i = 0; i < size; i++)
 	{
 		linkArr[i] = new int[size];
-		connectionArr[i] = new int[size];
 	}
 
 	for (int i = 0; i < size; i++)
@@ -210,128 +275,78 @@ void GraphWithWeightedEdges::ShowGraph()
 
 void GraphWithWeightedEdges::UseKruskalSAlgorithm()
 {
-	int** usedLinksArr = new int* [size];
+	int** pathArr = new int* [2];
+
+	for (int i = 0; i < 2; i++)
+	{
+		pathArr[i] = new int[size - 1];
+	}
+
+	int* connectionSet = new int[size];
 
 	for (int i = 0; i < size; i++)
 	{
-		usedLinksArr[i] = new int[size];
+		connectionSet[i] = -1;
 	}
 
-	for (int i = 0; i < size; i++)
+
+	int** linkDistanceArr = new int* [4];
+
+	for (int i = 0; i < 4; i++)
 	{
-		for (int j = 0; j < size; j++)
-		{
-			usedLinksArr[i][j] = -1;
-		}
+		linkDistanceArr[i] = new int[numberOfEdges];
 	}
 
-	int tableSize = size * (size - 1) / 2;
+	int linkDistArrCol = 0;
 
-	int* table = new int[tableSize];
-
-	int* distanceArr = new int[tableSize];
-
-
-
-	for (int i = 0; i < tableSize; i++)
-	{
-		table[i] = i;
-
-		//???
-		distanceArr[i] = i;
-	}
-
-	int k = 0;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = i + 1; j < size; j++)
 		{
-			distanceArr[k] = linkArr[i][j];
-			k++;
+			if (linkArr[i][j] != INT_MAX)
+			{
+				linkDistanceArr[0][linkDistArrCol] = i;
+				linkDistanceArr[1][linkDistArrCol] = j;
+				linkDistanceArr[2][linkDistArrCol] = linkArr[i][j];
+				linkDistanceArr[3][linkDistArrCol] = 0;
+				linkDistArrCol++;
+			}
 		}
 	}
 
 
-	// Use a simple sorting algorithm. Linear sort maybe?
 
-	for (int j = 0; j < tableSize - 1; j++)
+	for (int j = 0; j < numberOfEdges; j++)
 	{
-		bool flag = false;
-		int minElement = distanceArr[j];
-		int minElementIndex = -1;
-
-
-		for (int i = j + 1; i < tableSize; i++)
-		{
-			if (distanceArr[i] < minElement)
-			{
-				minElementIndex = i;
-				minElement = distanceArr[i];
-				flag = true;
-			}
-		}
-
-		if (flag)
-		{
-			int temp = distanceArr[minElementIndex];
-
-			distanceArr[minElementIndex] = distanceArr[j];
-
-			distanceArr[j] = temp;
-
-			temp = table[minElementIndex];
-
-			table[minElementIndex] = table[j];
-
-			table[j] = temp;
-		}
+		printf("from node: %d to node: %d = %d \n", linkDistanceArr[0][j],
+			linkDistanceArr[1][j], linkDistanceArr[2][j]);
 	}
 
+	int pathArrColIndex = 0;
 
-	for (int i = 0; i < tableSize; i++)
+	for (int i = 0; i < numberOfEdges; i++)
 	{
-		int row = 0;
-		int col = 0;
+		int minUnusedLinkCol = FindUnusedMinLink(linkDistanceArr, numberOfEdges);
 
-		ConvertOneDimToTwoDim(table[i], &row, &col);
-
-		bool isConnected = IsConnectedConnection(row, col);
-
-		if (row == 2 && col == 4)
+		if (!AreNodesConnected(connectionSet,
+			linkDistanceArr[0][minUnusedLinkCol], linkDistanceArr[1][minUnusedLinkCol]))
 		{
-			printf("asad");
+			Connect(connectionSet, linkDistanceArr[0][minUnusedLinkCol],
+				linkDistanceArr[1][minUnusedLinkCol]);
+
+			pathArr[0][pathArrColIndex] = linkDistanceArr[0][minUnusedLinkCol];
+
+			pathArr[1][pathArrColIndex] = linkDistanceArr[1][minUnusedLinkCol];
+
+			pathArrColIndex++;
 		}
 
-		if (!isConnected)
-		{
-			Connect(usedLinksArr, row, col);
-			printf("Connection Arr: \n");
+		linkDistanceArr[3][minUnusedLinkCol] = 1;
+	}
 
-			for (int i = 0; i < size; i++)
-			{
-				for (int j = 0; j < size; j++)
-				{
-					printf("ConnArr[%d][%d]: %d \n", i, j, connectionArr[i][j]);
-				}
-			}
-
-			printf("usedLinksArr:\n");
-
-			for (int i = 0; i < size; i++)
-			{
-				for (int j = 0; j < size; j++)
-				{
-					printf("usedLinksArr[%d][%d]: %d \n", i, j, usedLinksArr[i][j]);
-				}
-			}
-
-
-			if (CheckIfNodesAreAllConnected())
-			{
-				break;
-			}
-		}
-
+	for (int i = 0; i < size-1; i++)
+	{
+		printf("\n From %d to %d ", pathArr[0][i], pathArr[1][i]);
 	}
 
 }
